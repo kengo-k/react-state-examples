@@ -6,4 +6,4 @@ services:
     container_name: study-react
     tty: true
     volumes:
-      - "./app:/app"
+      - "./app:/home/node/app"

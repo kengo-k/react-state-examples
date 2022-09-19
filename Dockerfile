@@ -1,7 +1,6 @@
 FROM node:18.9.0-alpine3.15
 
-RUN apk add bash
-SHELL ["/bin/bash", "-c"]
+USER node
 
-WORKDIR /app
-CMD /bin/bash
+WORKDIR /home/node/app
+CMD /bin/ash
