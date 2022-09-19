@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    container_name: study-react
+    tty: true
+    volumes:
+      - "./app:/app"
