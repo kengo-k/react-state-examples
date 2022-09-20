@@ -1,19 +1,25 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import UserListPlain from './components/UserListPlain'
 import UserListQuery from './components/UserListQuery'
 
-const queryClient = new QueryClient()
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
       <div style={{ margin: '2em' }}>
         <h1>ユーザ情報</h1>
-        <UserListPlain />
-        <hr />
-        <UserListQuery />
+        <ul>
+          <li>
+            <Link to="user_list_plain">従来スタイル</Link>
+            <Link to="user_list_query">useQueryスタイル</Link>
+          </li>
+        </ul>
       </div>
-    </QueryClientProvider>
+      <Routes>
+        <Route path="/" element={<></>} />
+        <Route path="/user_list_plain" element={<UserListPlain />} />
+        <Route path="/user_list_query" element={<UserListQuery />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,7 +1,9 @@
 import { getIdGenerator, wait } from '../lib'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { useQuery, useMutation } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const getNextId = getIdGenerator()
+const queryClient = new QueryClient()
 
 const DATA = [
   { id: getNextId(), name: 'yamada' },
@@ -28,7 +30,6 @@ function UserListQuery() {
   const data = result.data
   const isLoading = result.isLoading
   console.log('fetch loading? ', isLoading)
-  const queryClient = useQueryClient()
   const mutation = useMutation(postUsers, {
     onSuccess: () => {
       console.log('invalidate "users" query...')
@@ -61,4 +62,10 @@ function UserListQuery() {
   )
 }
 
-export default UserListQuery
+const UserListQueryWrapper = () => (
+  <QueryClientProvider client={queryClient}>
+    <UserListQuery />
+  </QueryClientProvider>
+)
+
+export default UserListQueryWrapper
