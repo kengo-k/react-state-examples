@@ -1,11 +1,19 @@
-import User from './components/UserListPlain'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import UserListPlain from './components/UserListPlain'
+import UserListQuery from './components/UserListQuery'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div style={{ margin: '2em' }}>
-      <h1>ユーザ情報</h1>
-      <User />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div style={{ margin: '2em' }}>
+        <h1>ユーザ情報</h1>
+        <UserListPlain />
+        <hr />
+        <UserListQuery />
+      </div>
+    </QueryClientProvider>
   )
 }
 
