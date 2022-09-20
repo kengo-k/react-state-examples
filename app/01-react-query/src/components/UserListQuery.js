@@ -23,7 +23,7 @@ const postUsers = async () => {
   DATA.push({ id: getNextId(), name: 'kudou' })
 }
 
-function UserListQuery() {
+const UserListQuery = () => {
   console.log('render start...')
   const result = useQuery('users', fetchUsers)
   console.log('query result: ', result)

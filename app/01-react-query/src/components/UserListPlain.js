@@ -14,7 +14,7 @@ const fetchUsers = async () => {
   return DATA
 }
 
-function UserListPlain() {
+const UserListPlain = () => {
   console.log('render start...')
   const [users, setUsers] = useState([])
 
