@@ -6,10 +6,12 @@ function App() {
   return (
     <BrowserRouter>
       <div style={{ margin: '2em' }}>
-        <h1>ユーザ情報</h1>
+        <h1>State管理実装サンプル</h1>
         <ul>
           <li>
             <Link to="user_list_plain">従来スタイル</Link>
+          </li>
+          <li>
             <Link to="user_list_query">useQueryスタイル</Link>
           </li>
         </ul>
