@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import UserListPlain from './components/UserListPlain'
-import UserListQuery from './components/UserListQuery'
+
+import UserListPlain from '~/components/UserListPlain'
+import UserListQuery from '~/components/UserListQuery'
 
 function App() {
   return (

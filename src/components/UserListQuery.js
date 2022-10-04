@@ -1,6 +1,7 @@
-import { getIdGenerator, wait } from '../lib'
 import { useQuery, useMutation } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
+
+import { getIdGenerator, wait } from '~/lib'
 
 const getNextId = getIdGenerator()
 const queryClient = new QueryClient()

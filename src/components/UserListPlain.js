@@ -1,5 +1,6 @@
-import { getIdGenerator, wait } from '../lib'
 import { useState, useEffect } from 'react'
+
+import { getIdGenerator, wait } from '~/lib'
 
 const getNextId = getIdGenerator()
 
