@@ -6,7 +6,7 @@ import UserListQuery from '~/components/UserListQuery'
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ margin: '2em' }}>
+      <div>
         <h1>State管理実装サンプル</h1>
         <ul>
           <li>
