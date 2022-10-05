@@ -2,11 +2,12 @@ import { useQuery, useMutation } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { getIdGenerator, wait } from '~/lib'
+import { User } from '~/utils/types'
 
 const getNextId = getIdGenerator()
 const queryClient = new QueryClient()
 
-const DATA = [
+const DATA: User[] = [
   { id: getNextId(), name: 'yamada' },
   { id: getNextId(), name: 'tanaka' },
   { id: getNextId(), name: 'suzuki' },
@@ -26,10 +27,7 @@ const postUsers = async () => {
 
 const UserListQuery = () => {
   console.log('render start...')
-  const result = useQuery('users', fetchUsers)
-  console.log('query result: ', result)
-  const data = result.data
-  const isLoading = result.isLoading
+  const { data, isLoading } = useQuery<User[]>('users', fetchUsers)
   console.log('fetch loading? ', isLoading)
   const mutation = useMutation(postUsers, {
     onSuccess: () => {
@@ -47,7 +45,7 @@ const UserListQuery = () => {
     <div>
       <h2>ユーザ一覧</h2>
       <div>
-        {data.map((user) => (
+        {data?.map((user) => (
           <div key={user.id}>{user.name}</div>
         ))}
       </div>

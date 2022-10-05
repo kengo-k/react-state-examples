@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 
 import { getIdGenerator, wait } from '~/lib'
+import { User } from '~/utils/types'
 
 const getNextId = getIdGenerator()
 
-const DATA = [
+const DATA: User[] = [
   { id: getNextId(), name: 'yamada' },
   { id: getNextId(), name: 'tanaka' },
   { id: getNextId(), name: 'suzuki' },
@@ -17,7 +18,7 @@ const fetchUsers = async () => {
 
 const UserListPlain = () => {
   console.log('render start...')
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
     fetchUsers().then((data) => {

@@ -6,7 +6,7 @@ export const getIdGenerator = () => {
   }
 }
 
-export const wait = (sec) => {
+export const wait = (sec: number) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true)
