@@ -1,6 +1,7 @@
 import { useQuery, useMutation } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
+import { Tabs } from '~/components/Tabs'
 import { getIdGenerator, wait } from '~/lib'
 import { User } from '~/utils/types'
 
@@ -41,23 +42,28 @@ const UserListQuery = () => {
     return <span>Loading...</span>
   }
 
+  // return (
+  //   <div>
+  //     <h2>ユーザ一覧</h2>
+  //     <div>
+  //       {data?.map((user) => (
+  //         <div key={user.id}>{user.name}</div>
+  //       ))}
+  //     </div>
+  //     <button
+  //       onClick={() => {
+  //         console.log('clicked...')
+  //         mutation.mutate()
+  //       }}
+  //     >
+  //       update
+  //     </button>
+  //   </div>
+  // )
   return (
-    <div>
-      <h2>ユーザ一覧</h2>
-      <div>
-        {data?.map((user) => (
-          <div key={user.id}>{user.name}</div>
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          console.log('clicked...')
-          mutation.mutate()
-        }}
-      >
-        update
-      </button>
-    </div>
+    <Tabs tabId="useQuery">
+      <div>Hello,UseQuery</div>
+    </Tabs>
   )
 }
 

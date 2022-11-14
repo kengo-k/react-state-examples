@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export const TabItem = (props: { name: string; selected?: boolean }) => {
+export const TabItem = (props: { tabId: TabId; selected?: boolean }) => {
   const selectedClass =
     'inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500'
   const noSelectedClass =
@@ -12,22 +12,35 @@ export const TabItem = (props: { name: string; selected?: boolean }) => {
   return (
     <li className="mr-2">
       <a href="#" className={className}>
-        {props.name}
+        {props.tabId}
       </a>
     </li>
   )
 }
 
-export const Tabs = (props: { children: React.ReactElement<any> }) => {
+export type TabId =
+  | 'useState'
+  | 'useQuery'
+  | 'ReduxToolKit'
+  | 'Recoli'
+  | 'Jotai'
+  | 'Zustand'
+export const Tabs = (props: {
+  tabId: TabId
+  children: React.ReactElement<any>
+}) => {
   return (
     <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
       <ul className="flex flex-wrap -mb-px">
-        <TabItem name="useState" selected={true} />
-        <TabItem name="useQuery" />
-        <TabItem name="ReduxToolKit" />
-        <TabItem name="Recoli" />
-        <TabItem name="Jotai" />
-        <TabItem name="Zustand" />
+        <TabItem tabId="useState" selected={props.tabId === 'useState'} />
+        <TabItem tabId="useQuery" selected={props.tabId === 'useQuery'} />
+        <TabItem
+          tabId="ReduxToolKit"
+          selected={props.tabId === 'ReduxToolKit'}
+        />
+        <TabItem tabId="Recoli" selected={props.tabId === 'Recoli'} />
+        <TabItem tabId="Jotai" selected={props.tabId === 'Jotai'} />
+        <TabItem tabId="Zustand" selected={props.tabId === 'Zustand'} />
       </ul>
       {props.children}
     </div>
