@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 export const TabItem = (props: { name: string; selected?: boolean }) => {
   const selectedClass =
     'inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500'
@@ -16,7 +18,7 @@ export const TabItem = (props: { name: string; selected?: boolean }) => {
   )
 }
 
-export const Tabs = () => {
+export const Tabs = (props: { children: React.ReactElement<any> }) => {
   return (
     <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
       <ul className="flex flex-wrap -mb-px">
@@ -27,6 +29,7 @@ export const Tabs = () => {
         <TabItem name="Jotai" />
         <TabItem name="Zustand" />
       </ul>
+      {props.children}
     </div>
   )
 }
