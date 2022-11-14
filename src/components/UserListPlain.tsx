@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import { Tabs } from '~/components/Tabs'
 import { getIdGenerator, wait } from '~/lib'
 import { User } from '~/utils/types'
 
@@ -26,26 +27,27 @@ const UserListPlain = () => {
     })
   }, [])
 
-  return (
-    <div>
-      <h2>ユーザ一覧</h2>
-      <div>
-        {users.map((user) => (
-          <div key={user.id}>{user.name}</div>
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          console.log('clicked...')
-          const kudo = { id: getNextId(), name: 'kudo' }
-          const newState = [...users, kudo]
-          setUsers(newState)
-        }}
-      >
-        update
-      </button>
-    </div>
-  )
+  // return (
+  //   <div>
+  //     <h2>ユーザ一覧</h2>
+  //     <div>
+  //       {users.map((user) => (
+  //         <div key={user.id}>{user.name}</div>
+  //       ))}
+  //     </div>
+  //     <button
+  //       onClick={() => {
+  //         console.log('clicked...')
+  //         const kudo = { id: getNextId(), name: 'kudo' }
+  //         const newState = [...users, kudo]
+  //         setUsers(newState)
+  //       }}
+  //     >
+  //       update
+  //     </button>
+  //   </div>
+  // )
+  return <Tabs />
 }
 
 export default UserListPlain
