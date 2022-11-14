@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Tabs } from '~/components/Tabs'
+import { TabId, Tabs } from '~/components/Tabs'
 import { getIdGenerator, wait } from '~/lib'
 import { User } from '~/utils/types'
 
@@ -48,7 +48,7 @@ const UserListPlain = () => {
   //   </div>
   // )
   return (
-    <Tabs tabId="useState">
+    <Tabs initialTab="use_state" onTabClicked={(tabId: TabId) => {}}>
       <div>Hello,useState</div>
     </Tabs>
   )

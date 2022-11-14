@@ -61,7 +61,7 @@ const UserListQuery = () => {
   //   </div>
   // )
   return (
-    <Tabs tabId="useQuery">
+    <Tabs initialTab="use_query" onTabClicked={() => {}}>
       <div>Hello,UseQuery</div>
     </Tabs>
   )
