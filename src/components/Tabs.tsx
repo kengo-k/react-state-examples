@@ -25,7 +25,7 @@ export const TabItem = (props: {
   }
   return (
     <li className="mr-2" onClick={() => props.onTabClicked(props.tabId)}>
-      <Link to={`/${props.tabId}`} className={className}>
+      <Link to={`/state_management/${props.tabId}`} className={className}>
         {props.tabId}
       </Link>
     </li>

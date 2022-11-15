@@ -32,7 +32,7 @@ function App() {
                 }
               />
               <Route
-                path="/state_management"
+                path="/state_management/*"
                 element={
                   <Tabs initialTab="use_state">
                     <div></div>
