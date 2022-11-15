@@ -1,3 +1,5 @@
+import { ItemTable } from './ItemTable'
+import { Loading } from './Loading'
 import { useQuery } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -8,7 +10,7 @@ const queryClient = new QueryClient()
 
 const UserListQuery = () => {
   console.log('render start...')
-  const { data, isLoading } = useQuery<Item[]>('items', fetchItems)
+  const { data: items, isLoading } = useQuery<Item[]>('items', fetchItems)
   console.log('fetch loading? ', isLoading)
   // const mutation = useMutation(postUsers, {
   //   onSuccess: () => {
@@ -17,29 +19,11 @@ const UserListQuery = () => {
   //   },
   // })
 
-  if (isLoading) {
-    console.log('now loading...')
-    return <span>Loading...</span>
+  if (isLoading || items == null) {
+    return <Loading />
   }
 
-  return (
-    <div>
-      <h2>ユーザ一覧</h2>
-      <div>
-        {data?.map((user) => (
-          <div key={user.id}>{user.name}</div>
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          console.log('clicked...')
-          //mutation.mutate()
-        }}
-      >
-        update
-      </button>
-    </div>
-  )
+  return <ItemTable items={items} />
 }
 
 const UserListQueryWrapper = () => (
