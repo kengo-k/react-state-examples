@@ -1,41 +1,21 @@
-import { useQuery, useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-import { Tabs } from '~/components/Tabs'
-import { getIdGenerator, wait } from '~/lib'
-import { User } from '~/utils/types'
+import { fetchItems } from '~/mockapi/api'
+import { Item } from '~/utils/types'
 
-const getNextId = getIdGenerator()
 const queryClient = new QueryClient()
-
-const DATA: User[] = [
-  { id: getNextId(), name: 'yamada' },
-  { id: getNextId(), name: 'tanaka' },
-  { id: getNextId(), name: 'suzuki' },
-]
-
-const fetchUsers = async () => {
-  console.log('execute query...')
-  await wait(1)
-  return DATA
-}
-
-const postUsers = async () => {
-  console.log('execute mutate...')
-  await wait(1)
-  DATA.push({ id: getNextId(), name: 'kudou' })
-}
 
 const UserListQuery = () => {
   console.log('render start...')
-  const { data, isLoading } = useQuery<User[]>('users', fetchUsers)
+  const { data, isLoading } = useQuery<Item[]>('items', fetchItems)
   console.log('fetch loading? ', isLoading)
-  const mutation = useMutation(postUsers, {
-    onSuccess: () => {
-      console.log('invalidate "users" query...')
-      queryClient.invalidateQueries('users')
-    },
-  })
+  // const mutation = useMutation(postUsers, {
+  //   onSuccess: () => {
+  //     console.log('invalidate "users" query...')
+  //     queryClient.invalidateQueries('users')
+  //   },
+  // })
 
   if (isLoading) {
     console.log('now loading...')
@@ -53,7 +33,7 @@ const UserListQuery = () => {
       <button
         onClick={() => {
           console.log('clicked...')
-          mutation.mutate()
+          //mutation.mutate()
         }}
       >
         update

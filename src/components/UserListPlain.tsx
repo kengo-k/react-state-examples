@@ -1,29 +1,15 @@
 import { useState, useEffect } from 'react'
 
-import { TabId, Tabs } from '~/components/Tabs'
-import { getIdGenerator, wait } from '~/lib'
-import { User } from '~/utils/types'
-
-const getNextId = getIdGenerator()
-
-const DATA: User[] = [
-  { id: getNextId(), name: 'yamada' },
-  { id: getNextId(), name: 'tanaka' },
-  { id: getNextId(), name: 'suzuki' },
-]
-
-const fetchUsers = async () => {
-  await wait(1)
-  return DATA
-}
+import { fetchItems } from '~/mockapi/api'
+import { Item } from '~/utils/types'
 
 const UserListPlain = () => {
   console.log('render start...')
-  const [users, setUsers] = useState<User[]>([])
+  const [items, setItems] = useState<Item[]>([])
 
   useEffect(() => {
-    fetchUsers().then((data) => {
-      setUsers(data)
+    fetchItems().then((data) => {
+      setItems(data)
     })
   }, [])
 
@@ -50,85 +36,32 @@ const UserListPlain = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Apple MacBook Pro 17"
-            </th>
-            <td className="py-4 px-6">Sliver</td>
-            <td className="py-4 px-6">Laptop</td>
-            <td className="py-4 px-6">$2999</td>
-            <td className="py-4 px-6 text-right">
-              <a
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Edit
-              </a>
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Microsoft Surface Pro
-            </th>
-            <td className="py-4 px-6">White</td>
-            <td className="py-4 px-6">Laptop PC</td>
-            <td className="py-4 px-6">$1999</td>
-            <td className="py-4 px-6 text-right">
-              <a
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Edit
-              </a>
-            </td>
-          </tr>
-          <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Magic Mouse 2
-            </th>
-            <td className="py-4 px-6">Black</td>
-            <td className="py-4 px-6">Accessories</td>
-            <td className="py-4 px-6">$99</td>
-            <td className="py-4 px-6 text-right">
-              <a
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Edit
-              </a>
-            </td>
-          </tr>
+          {items.map((item) => {
+            return (
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th
+                  scope="row"
+                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {item.name}
+                </th>
+                <td className="py-4 px-6">{item.color}</td>
+                <td className="py-4 px-6">{item.category}</td>
+                <td className="py-4 px-6">${item.price}</td>
+                <td className="py-4 px-6 text-right">
+                  <a
+                    href="#"
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    Edit
+                  </a>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
-
-    // <div>
-    //   <h2>ユーザ一覧</h2>
-    //   <div>
-    //     {users.map((user) => (
-    //       <div key={user.id}>{user.name}</div>
-    //     ))}
-    //   </div>
-    //   <button
-    //     onClick={() => {
-    //       console.log('clicked...')
-    //       const kudo = { id: getNextId(), name: 'kudo' }
-    //       const newState = [...users, kudo]
-    //       setUsers(newState)
-    //     }}
-    //   >
-    //     update
-    //   </button>
-    // </div>
   )
 }
 
