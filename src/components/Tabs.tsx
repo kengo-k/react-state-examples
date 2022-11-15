@@ -35,7 +35,6 @@ export const TabItem = (props: {
 export const Tabs = (props: {
   children: React.ReactElement<any>
   initialTab: TabId
-  onTabClicked: (tabId: TabId) => void
 }) => {
   const [selectedTabId, setSelectedTabId] = useState<TabId>(props.initialTab)
   return (
@@ -44,32 +43,32 @@ export const Tabs = (props: {
         <TabItem
           tabId="use_state"
           selected={selectedTabId === 'use_state'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
         <TabItem
           tabId="use_query"
           selected={selectedTabId === 'use_query'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
         <TabItem
           tabId="redux_toolKit"
           selected={selectedTabId === 'redux_toolKit'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
         <TabItem
           tabId="recoli"
           selected={selectedTabId === 'recoli'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
         <TabItem
           tabId="jotai"
           selected={selectedTabId === 'jotai'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
         <TabItem
           tabId="zustand"
           selected={selectedTabId === 'zustand'}
-          onTabClicked={props.onTabClicked}
+          onTabClicked={setSelectedTabId}
         />
       </ul>
       {props.children}

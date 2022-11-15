@@ -1,4 +1,5 @@
 import { NavItem, Navs } from './components/Navs'
+import { Tabs } from './components/Tabs'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import UserListPlain from '~/components/UserListPlain'
@@ -22,10 +23,21 @@ function App() {
         <div className="flex flex-col w-full md:space-y-4">
           <div className="overflow-auto h-screen pb-24 px-4 md:px-6 my-8">
             <Routes>
-              <Route path="/" element={<div>state management examples</div>} />
+              <Route
+                path="/"
+                element={
+                  <Tabs initialTab="use_state">
+                    <div></div>
+                  </Tabs>
+                }
+              />
               <Route
                 path="/state_management"
-                element={<div>state management examples</div>}
+                element={
+                  <Tabs initialTab="use_state">
+                    <div></div>
+                  </Tabs>
+                }
               />
               <Route path="/about" element={<div>about this page</div>} />
             </Routes>

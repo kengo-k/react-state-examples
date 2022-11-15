@@ -48,7 +48,7 @@ const UserListPlain = () => {
   //   </div>
   // )
   return (
-    <Tabs initialTab="use_state" onTabClicked={(tabId: TabId) => {}}>
+    <Tabs initialTab="use_state">
       <div>Hello,useState</div>
     </Tabs>
   )
