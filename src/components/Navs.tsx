@@ -1,13 +1,17 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export const NavItem = (props: { label: String; link: String }) => {
+  const location = useLocation()
+  const noSelectedClass =
+    'w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent'
+  const selectedClass =
+    'w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start border-l-4 border-purple-500'
+  const className =
+    props.link === location.pathname ? selectedClass : noSelectedClass
   return (
     <div>
-      <Link
-        to={`${props.link}`}
-        className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start border-l-4 border-purple-500"
-      >
+      <Link to={`${props.link}`} className={className}>
         <span className="text-left">
           <svg
             width="20"
