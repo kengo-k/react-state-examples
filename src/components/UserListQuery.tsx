@@ -42,28 +42,23 @@ const UserListQuery = () => {
     return <span>Loading...</span>
   }
 
-  // return (
-  //   <div>
-  //     <h2>ユーザ一覧</h2>
-  //     <div>
-  //       {data?.map((user) => (
-  //         <div key={user.id}>{user.name}</div>
-  //       ))}
-  //     </div>
-  //     <button
-  //       onClick={() => {
-  //         console.log('clicked...')
-  //         mutation.mutate()
-  //       }}
-  //     >
-  //       update
-  //     </button>
-  //   </div>
-  // )
   return (
-    <Tabs initialTab="use_query">
-      <div>Hello,UseQuery</div>
-    </Tabs>
+    <div>
+      <h2>ユーザ一覧</h2>
+      <div>
+        {data?.map((user) => (
+          <div key={user.id}>{user.name}</div>
+        ))}
+      </div>
+      <button
+        onClick={() => {
+          console.log('clicked...')
+          mutation.mutate()
+        }}
+      >
+        update
+      </button>
+    </div>
   )
 }
 

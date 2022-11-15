@@ -1,6 +1,8 @@
+import UserListPlain from './UserListPlain'
+import UserListQueryWrapper from './UserListQuery'
 import * as React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 
 export type TabId =
   | 'use_state'
@@ -32,10 +34,7 @@ export const TabItem = (props: {
   )
 }
 
-export const Tabs = (props: {
-  children: React.ReactElement<any>
-  initialTab: TabId
-}) => {
+export const Tabs = (props: { initialTab: TabId }) => {
   const [selectedTabId, setSelectedTabId] = useState<TabId>(props.initialTab)
   return (
     <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
@@ -71,7 +70,11 @@ export const Tabs = (props: {
           onTabClicked={setSelectedTabId}
         />
       </ul>
-      {props.children}
+      <Routes>
+        <Route path="/" element={<UserListPlain />} />
+        <Route path="/use_state" element={<UserListPlain />} />
+        <Route path="/use_query" element={<UserListQueryWrapper />} />
+      </Routes>
     </div>
   )
 }
