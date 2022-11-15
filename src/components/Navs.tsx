@@ -32,8 +32,8 @@ export const NavItem = (props: { label: String; link: String }) => {
 export const Navs = () => {
   return (
     <>
-      <NavItem label="aaa" link="/use_state" />
-      <NavItem label="aaa" link="/use_query" />
+      <NavItem label="state management" link="/state_management" />
+      <NavItem label="about" link="/about" />
     </>
   )
 }

@@ -22,9 +22,12 @@ function App() {
         <div className="flex flex-col w-full md:space-y-4">
           <div className="overflow-auto h-screen pb-24 px-4 md:px-6 my-8">
             <Routes>
-              <Route path="/" element={<div>use_state example</div>} />
-              <Route path="/use_state" element={<div>use_state example</div>} />
-              <Route path="/use_query" element={<div>use_query example</div>} />
+              <Route path="/" element={<div>state management examples</div>} />
+              <Route
+                path="/state_management"
+                element={<div>state management examples</div>}
+              />
+              <Route path="/about" element={<div>about this page</div>} />
             </Routes>
           </div>
         </div>
