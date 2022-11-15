@@ -5,12 +5,6 @@ import UserListPlain from '~/components/UserListPlain'
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<UserListPlain />} />
-    //     <Route path="/use_state" element={<UserListPlain />} />
-    //   </Routes>
-    // </BrowserRouter>
     <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
       <div className="flex items-start justify-between">
         <div className="h-screen hidden lg:block shadow-lg relative w-80">
@@ -21,13 +15,7 @@ function App() {
               </p>
             </div>
             <nav className="mt-6">
-              {
-                <Routes>
-                  <Route path="/" element={<Navs />} />
-                  <Route path="/use_state" element={<Navs />} />
-                  <Route path="/use_query" element={<Navs />} />
-                </Routes>
-              }
+              <Navs />
             </nav>
           </div>
         </div>
