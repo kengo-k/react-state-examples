@@ -1,13 +1,13 @@
-import { ItemTable } from './ItemTable'
-import { Loading } from './Loading'
 import { useState, useEffect } from 'react'
 
+import { ItemTable } from '~/components/ItemTable'
+import { Loading } from '~/components/Loading'
 import { createApi } from '~/mockapi/api'
 import { Item } from '~/utils/types'
 
 const api = createApi()
 
-const UserListPlain = () => {
+export const UseStateExample = () => {
   console.log('render start...')
   const [loading, setLoading] = useState<boolean>(true)
   const [items, setItems] = useState<Item[]>([])
@@ -25,5 +25,3 @@ const UserListPlain = () => {
 
   return <ItemTable items={items} />
 }
-
-export default UserListPlain

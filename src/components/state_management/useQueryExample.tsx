@@ -1,15 +1,15 @@
-import { ItemTable } from './ItemTable'
-import { Loading } from './Loading'
 import { useQuery } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
+import { ItemTable } from '~/components/ItemTable'
+import { Loading } from '~/components/Loading'
 import { createApi } from '~/mockapi/api'
 import { Item } from '~/utils/types'
 
 const api = createApi()
 const queryClient = new QueryClient()
 
-const UserListQuery = () => {
+const UseQueryExampleInner = () => {
   console.log('render start...')
   const { data: items, isLoading } = useQuery<Item[]>('items', api.fetchItems)
   console.log('fetch loading? ', isLoading)
@@ -27,10 +27,8 @@ const UserListQuery = () => {
   return <ItemTable items={items} />
 }
 
-const UserListQueryWrapper = () => (
+export const UserQueryExample = () => (
   <QueryClientProvider client={queryClient}>
-    <UserListQuery />
+    <UseQueryExampleInner />
   </QueryClientProvider>
 )
-
-export default UserListQueryWrapper

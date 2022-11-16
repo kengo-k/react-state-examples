@@ -1,8 +1,7 @@
-import { NavItem, Navs } from './components/Navs'
-import { Tabs } from './components/Tabs'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
-import UserListPlain from '~/components/UserListPlain'
+import { Navs } from '~/components/Navs'
+import { Tabs } from '~/components/state_management/Tabs'
 
 function App() {
   return (

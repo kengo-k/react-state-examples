@@ -1,8 +1,9 @@
-import UserListPlain from './UserListPlain'
-import UserListQueryWrapper from './UserListQuery'
 import * as React from 'react'
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+
+import { UserQueryExample } from '~/components/state_management/useQueryExample'
+import { UseStateExample } from '~/components/state_management/useStateExample'
 
 export type TabId =
   | 'use_state'
@@ -71,9 +72,9 @@ export const Tabs = (props: { initialTab: TabId }) => {
         />
       </ul>
       <Routes>
-        <Route path="/" element={<UserListPlain />} />
-        <Route path="/use_state" element={<UserListPlain />} />
-        <Route path="/use_query" element={<UserListQueryWrapper />} />
+        <Route path="/" element={<UseStateExample />} />
+        <Route path="/use_state" element={<UseStateExample />} />
+        <Route path="/use_query" element={<UserQueryExample />} />
       </Routes>
     </div>
   )
