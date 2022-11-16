@@ -3,14 +3,15 @@ import { Loading } from './Loading'
 import { useQuery } from 'react-query'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-import { fetchItems } from '~/mockapi/api'
+import { createApi } from '~/mockapi/api'
 import { Item } from '~/utils/types'
 
+const api = createApi()
 const queryClient = new QueryClient()
 
 const UserListQuery = () => {
   console.log('render start...')
-  const { data: items, isLoading } = useQuery<Item[]>('items', fetchItems)
+  const { data: items, isLoading } = useQuery<Item[]>('items', api.fetchItems)
   console.log('fetch loading? ', isLoading)
   // const mutation = useMutation(postUsers, {
   //   onSuccess: () => {

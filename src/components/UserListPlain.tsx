@@ -2,8 +2,10 @@ import { ItemTable } from './ItemTable'
 import { Loading } from './Loading'
 import { useState, useEffect } from 'react'
 
-import { fetchItems } from '~/mockapi/api'
+import { createApi } from '~/mockapi/api'
 import { Item } from '~/utils/types'
+
+const api = createApi()
 
 const UserListPlain = () => {
   console.log('render start...')
@@ -11,7 +13,7 @@ const UserListPlain = () => {
   const [items, setItems] = useState<Item[]>([])
 
   useEffect(() => {
-    fetchItems().then((data) => {
+    api.fetchItems().then((data) => {
       setItems(data)
       setLoading(false)
     })
