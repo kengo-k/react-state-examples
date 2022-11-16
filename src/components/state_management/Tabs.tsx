@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 
+import { RecoilExample } from '~/components/state_management/recoilExample'
 import { UserQueryExample } from '~/components/state_management/useQueryExample'
 import { UseStateExample } from '~/components/state_management/useStateExample'
 
@@ -9,7 +10,7 @@ export type TabId =
   | 'use_state'
   | 'use_query'
   | 'redux_toolKit'
-  | 'recoli'
+  | 'recoil'
   | 'jotai'
   | 'zustand'
 
@@ -56,8 +57,8 @@ export const Tabs = (props: { initialTab: TabId }) => {
           onTabClicked={setSelectedTabId}
         />
         <TabItem
-          tabId="recoli"
-          selected={selectedTabId === 'recoli'}
+          tabId="recoil"
+          selected={selectedTabId === 'recoil'}
           onTabClicked={setSelectedTabId}
         />
         <TabItem
@@ -75,6 +76,7 @@ export const Tabs = (props: { initialTab: TabId }) => {
         <Route path="/" element={<UseStateExample />} />
         <Route path="/use_state" element={<UseStateExample />} />
         <Route path="/use_query" element={<UserQueryExample />} />
+        <Route path="/recoil" element={<RecoilExample />} />
       </Routes>
     </div>
   )
