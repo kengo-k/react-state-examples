@@ -1,10 +1,13 @@
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+
 type CardProps = {
   subtitle: string;
   title: string;
   description: string;
+  url: string;
 };
 
-const Card: React.FC<CardProps> = ({ subtitle, title, description }) => {
+const Card: React.FC<CardProps> = ({ subtitle, title, description, url }) => {
   return (
     <div className="lg:w-1/3 sm:w-1/2 p-4">
       <div className="flex relative">
@@ -13,7 +16,7 @@ const Card: React.FC<CardProps> = ({ subtitle, title, description }) => {
             {subtitle}
           </h2>
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-            {title}
+            <Link to={url}>{title}</Link>
           </h1>
           <p className="leading-relaxed">{description}</p>
         </div>
@@ -23,6 +26,22 @@ const Card: React.FC<CardProps> = ({ subtitle, title, description }) => {
 };
 
 const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/vanilla" element={<Home />} />
+        <Route path="/redux_toolkit" element={<Home />} />
+        <Route path="/apollo_client" element={<Home />} />
+        <Route path="/react_query" element={<Home />} />
+        <Route path="/zustand" element={<Home />} />
+        <Route path="/jotai" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+const Home = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -40,31 +59,37 @@ const App = () => {
             subtitle="State management using vanilla React"
             title="React's useState & useContext"
             description="Learn how to manage state using React's core techniques."
+            url="/vanilla"
           />
           <Card
             subtitle="Redux Architecture"
             title="Redux Toolkit"
             description="Introducing the official toolkit for reducing Redux boilerplate and achieving efficient state management."
+            url="/redux_toolkit"
           />
           <Card
             subtitle="GraphQL Client"
             title="Apollo Client"
             description="Explore a powerful client library for fetching and managing data using GraphQL."
+            url="/apollo_client"
           />
           <Card
             subtitle="Data Fetching & Synchronization"
             title="react-query"
             description="A library for data fetching, caching, and synchronization."
+            url="/react_query"
           />
           <Card
             subtitle="Minimalistic State Management"
             title="zustand"
             description="Explore a library aiming for a simple API and flexible state management."
+            url="/zustand"
           />
           <Card
             subtitle="Atomic State Management"
             title="jotai"
             description="Introducing a library for atomic state management, learn how to efficiently manage finely divided states."
+            url="/jotai"
           />
         </div>
       </div>
