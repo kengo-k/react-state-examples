@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="text-4xl">
+    <div className="text-8xl">
       HELLO
     </div>
   );
