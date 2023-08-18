@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { ReduxExample } from "./ReduxExample";
 import { VanillaExample } from "./VanillaExample";
 
 type CardProps = {
@@ -32,7 +33,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vanilla" element={<VanillaExample />} />
-        <Route path="/redux_toolkit" element={<Home />} />
+        <Route path="/redux_toolkit" element={<ReduxExample />} />
         <Route path="/apollo_client" element={<Home />} />
         <Route path="/react_query" element={<Home />} />
         <Route path="/zustand" element={<Home />} />
