@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-css": "postcss src/main.css -o public/styles.css",
+    "build-css": "postcss src/main.css -o public/main.css",
     "build-css:watch": "postcss src/main.css -o public/main.css --watch",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
