@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({ subtitle, title, description, url }) => {
           <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
             {subtitle}
           </h2>
-          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+          <h1 className="title-font text-lg font-medium text-gray-900 mb-3 underline hover:text-indigo-600">
             <Link to={url}>{title}</Link>
           </h1>
           <p className="leading-relaxed">{description}</p>
