@@ -23,7 +23,7 @@ const updateUserName = (inputUserName: string): Promise<User> =>
     }, 1000);
   });
 
-export const VanillaExample: React.FC = () => {
+export const UseStateExample: React.FC = () => {
   const [user, setUser] = useState<User>({ name: "" });
   const [theme, setTheme] = useState<Theme>("light");
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,7 +49,7 @@ export const VanillaExample: React.FC = () => {
 
   return (
     <div className={`h-screen flex flex-col justify-center items-center`}>
-      <Breadcrumbs label="Redux Example" />
+      <Breadcrumbs label="useState Example" />
       <Form
         userName={user.name}
         theme={theme}

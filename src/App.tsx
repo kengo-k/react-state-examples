@@ -2,7 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { JotaiExample } from "./JotaiExample";
 import { ReduxExample } from "./ReduxExample";
 import { UseReducerExample } from "./UseReducerExample";
-import { VanillaExample } from "./VanillaExample";
+import { UseStateExample } from "./UseStateExample";
 import { ZustandExample } from "./ZustandExample";
 
 type CardProps = {
@@ -35,7 +35,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/use_state" element={<VanillaExample />} />
+        <Route path="/use_state" element={<UseStateExample />} />
         <Route path="/use_reducer" element={<UseReducerExample />} />
         <Route path="/redux_toolkit" element={<ReduxExample />} />
         <Route path="/apollo_client" element={<Home />} />
