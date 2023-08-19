@@ -10,10 +10,11 @@ import {
   useDispatch as _useDispatch,
   useSelector,
 } from "react-redux";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 type State = {
   user: {
-    name: string;
+    name: string | null;
   };
   theme: "light" | "dark";
   isLoading: boolean;
@@ -21,7 +22,7 @@ type State = {
 
 const initialState: State = {
   user: {
-    name: "",
+    name: null,
   },
   theme: "light",
   isLoading: false,
@@ -34,6 +35,12 @@ const load = () => {
       resolve("John Doe");
     }, 1000);
   });
+};
+
+const asyncActions = {
+  load: createAsyncThunk("app/load", async () => {
+    return await load();
+  }),
 };
 
 const slice = createSlice({
@@ -58,19 +65,14 @@ const slice = createSlice({
   },
 });
 
+const actions = slice.actions;
+
 const store = configureStore({
   reducer: slice.reducer,
 });
 
 type AppDispatch = typeof store.dispatch;
 const useDispatch = () => _useDispatch<AppDispatch>();
-
-const actions = slice.actions;
-const asyncActions = {
-  load: createAsyncThunk("app/load", async () => {
-    return await load();
-  }),
-};
 
 export const ReduxExample: React.FC = () => {
   return (
@@ -86,22 +88,27 @@ const App: React.FC = () => {
   const theme = useSelector((state: State) => state.theme);
   const isLoading = useSelector((state: State) => state.isLoading);
 
-  const [inputUserName, setInputUserName] = React.useState<string>(userName);
+  const [inputUserName, setInputUserName] = React.useState<string>(
+    userName ?? ""
+  );
 
   useEffect(() => {
-    dispatch(asyncActions.load());
-  }, [dispatch]);
+    if (userName == null) {
+      dispatch(asyncActions.load());
+    }
+  }, [dispatch, userName]);
 
   return (
-    <div
-      className={`h-screen flex flex-col justify-center items-center ${
-        theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
-      }`}
-    >
-      <div className="p-8 border rounded shadow-lg w-1/3">
+    <div className={`h-screen flex flex-col justify-center items-center`}>
+      <Breadcrumbs label="Redux Example" />
+      <div
+        className={`p-8 border rounded shadow-lg w-1/3 ${
+          theme === "dark" ? "bg-gray-700 text-white" : "bg-white text-black"
+        }`}
+      >
         <h1 className="text-2xl mb-4">Hello, {userName || "..."}</h1>
         <input
-          className="border rounded w-full p-2 mb-4"
+          className="border rounded w-full p-2 mb-4 text-black"
           value={inputUserName}
           onChange={(e) => setInputUserName(e.target.value)}
           placeholder="Enter new name"
