@@ -90,10 +90,6 @@ const App: React.FC = () => {
   const theme = useSelector((state: State) => state.theme);
   const isLoading = useSelector((state: State) => state.isLoading);
 
-  const [inputUserName, setInputUserName] = React.useState<string>(
-    userName ?? ""
-  );
-
   useEffect(() => {
     if (userName == null) {
       dispatch(asyncActions.load());
