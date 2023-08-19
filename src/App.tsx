@@ -1,6 +1,8 @@
+import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { JotaiExample } from "./JotaiExample";
 import { ReduxExample } from "./ReduxExample";
+import { UseContextExample, UseContextProvider } from "./UseContextExample";
 import { UseReducerExample } from "./UseReducerExample";
 import { UseStateExample } from "./UseStateExample";
 import { ZustandExample } from "./ZustandExample";
@@ -32,18 +34,21 @@ const Card: React.FC<CardProps> = ({ subtitle, title, description, url }) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/use_state" element={<UseStateExample />} />
-        <Route path="/use_reducer" element={<UseReducerExample />} />
-        <Route path="/redux_toolkit" element={<ReduxExample />} />
-        <Route path="/apollo_client" element={<Home />} />
-        <Route path="/react_query" element={<Home />} />
-        <Route path="/zustand" element={<ZustandExample />} />
-        <Route path="/jotai" element={<JotaiExample />} />
-      </Routes>
-    </BrowserRouter>
+    <UseContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/use_state" element={<UseStateExample />} />
+          <Route path="/use_reducer" element={<UseReducerExample />} />
+          <Route path="/use_context" element={<UseContextExample />} />
+          <Route path="/redux_toolkit" element={<ReduxExample />} />
+          <Route path="/apollo_client" element={<Home />} />
+          <Route path="/react_query" element={<Home />} />
+          <Route path="/zustand" element={<ZustandExample />} />
+          <Route path="/jotai" element={<JotaiExample />} />
+        </Routes>
+      </BrowserRouter>
+    </UseContextProvider>
   );
 };
 
@@ -72,6 +77,12 @@ const Home = () => {
             title="React's useReducer"
             description="Dive deeper into React's state management with useReducer"
             url="/use_reducer"
+          />
+          <Card
+            subtitle=""
+            title="React's useContext & useReducer"
+            description=""
+            url="/use_context"
           />
           <Card
             subtitle="Redux Architecture"
