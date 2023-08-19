@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { ReduxExample } from "./ReduxExample";
 import { VanillaExample } from "./VanillaExample";
+import { ZustandExample } from "./ZustandExample";
 
 type CardProps = {
   subtitle: string;
@@ -36,7 +37,7 @@ const App = () => {
         <Route path="/redux_toolkit" element={<ReduxExample />} />
         <Route path="/apollo_client" element={<Home />} />
         <Route path="/react_query" element={<Home />} />
-        <Route path="/zustand" element={<Home />} />
+        <Route path="/zustand" element={<ZustandExample />} />
         <Route path="/jotai" element={<Home />} />
       </Routes>
     </BrowserRouter>
