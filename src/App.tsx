@@ -64,54 +64,57 @@ const Home = () => {
             This is a collection of simple example codes using the numerous
             state management libraries available for React.
           </p>
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+            (React ver: 18.2.20)
+          </p>
         </div>
         <div className="flex flex-wrap -m-4">
           <Card
-            subtitle="State management using React"
-            title="React's useState"
-            description="Learn how to manage state using React's core techniques."
+            subtitle="State management using raw React"
+            title="useState"
+            description="Learn how to manage state with useState."
             url="/use_state"
           />
           <Card
-            subtitle="Advanced state management in React"
-            title="React's useReducer"
-            description="Dive deeper into React's state management with useReducer"
+            subtitle="Advanced state management using raw React"
+            title="useReducer"
+            description="Dive deeper into state management with useReducer."
             url="/use_reducer"
           />
           <Card
-            subtitle=""
-            title="React's useContext & useReducer"
-            description=""
+            subtitle="Global state management using raw React"
+            title="useContext & useReducer"
+            description="Manage global state using useContext & useReducer."
             url="/use_context"
           />
           <Card
             subtitle="Redux Architecture"
             title="Redux Toolkit"
-            description="Introducing the official toolkit for reducing Redux boilerplate and achieving efficient state management."
+            description="The official toolkit for Redux."
             url="/redux_toolkit"
           />
           <Card
             subtitle="State management using GraphQL"
             title="Apollo Client"
-            description="Explore a powerful client library for fetching and managing data using GraphQL."
+            description="A library for managing state using GraphQL."
             url="/apollo_client"
           />
           <Card
             subtitle="Data Fetching & Synchronization"
             title="react-query"
-            description="A library for data fetching, caching, and synchronization."
+            description="A library for data fetching and synchronization."
             url="/react_query"
           />
           <Card
             subtitle="Minimalistic State Management"
             title="zustand"
-            description="Explore a library aiming for a simple API and flexible state management."
+            description="A Redux like library aiming for a simple API."
             url="/zustand"
           />
           <Card
             subtitle="Atomic State Management"
             title="jotai"
-            description="Introducing a library for atomic state management, learn how to efficiently manage finely divided states."
+            description="A library for atomic state management."
             url="/jotai"
           />
           {/* <Card
