@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { JotaiExample } from "./JotaiExample";
 import { ReduxExample } from "./ReduxExample";
+import { UseReducerExample } from "./UseReducerExample";
 import { VanillaExample } from "./VanillaExample";
 import { ZustandExample } from "./ZustandExample";
 
@@ -34,7 +35,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/vanilla" element={<VanillaExample />} />
+        <Route path="/use_state" element={<VanillaExample />} />
+        <Route path="/use_reducer" element={<UseReducerExample />} />
         <Route path="/redux_toolkit" element={<ReduxExample />} />
         <Route path="/apollo_client" element={<Home />} />
         <Route path="/react_query" element={<Home />} />
@@ -60,10 +62,16 @@ const Home = () => {
         </div>
         <div className="flex flex-wrap -m-4">
           <Card
-            subtitle="State management using vanilla React"
-            title="React's useState & useContext"
+            subtitle="State management using React"
+            title="React's useState"
             description="Learn how to manage state using React's core techniques."
-            url="/vanilla"
+            url="/use_state"
+          />
+          <Card
+            subtitle="Advanced state management in React"
+            title="React's useReducer"
+            description="Dive deeper into React's state management with useReducer"
+            url="/use_reducer"
           />
           <Card
             subtitle="Redux Architecture"
@@ -72,7 +80,7 @@ const Home = () => {
             url="/redux_toolkit"
           />
           <Card
-            subtitle="GraphQL Client"
+            subtitle="State management using GraphQL"
             title="Apollo Client"
             description="Explore a powerful client library for fetching and managing data using GraphQL."
             url="/apollo_client"
@@ -95,6 +103,18 @@ const Home = () => {
             description="Introducing a library for atomic state management, learn how to efficiently manage finely divided states."
             url="/jotai"
           />
+          {/* <Card
+            subtitle=""
+            title="Recoil"
+            description=""
+            url="/recoil"
+          />
+          <Card
+            subtitle=""
+            title="swr"
+            description="Introducing a library for atomic state management, learn how to efficiently manage finely divided states."
+            url="/swr"
+          /> */}
         </div>
       </div>
     </section>
