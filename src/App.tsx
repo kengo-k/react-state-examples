@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import { JotaiExample } from "./JotaiExample";
+import { RecoilExample } from "./RecoilExample";
 import { ReduxExample } from "./ReduxExample";
 import { UseContextExample, UseContextProvider } from "./UseContextExample";
 import { UseReducerExample } from "./UseReducerExample";
@@ -34,21 +36,24 @@ const Card: React.FC<CardProps> = ({ subtitle, title, description, url }) => {
 
 const App = () => {
   return (
-    <UseContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/use_state" element={<UseStateExample />} />
-          <Route path="/use_reducer" element={<UseReducerExample />} />
-          <Route path="/use_context" element={<UseContextExample />} />
-          <Route path="/redux_toolkit" element={<ReduxExample />} />
-          <Route path="/apollo_client" element={<Home />} />
-          <Route path="/react_query" element={<Home />} />
-          <Route path="/zustand" element={<ZustandExample />} />
-          <Route path="/jotai" element={<JotaiExample />} />
-        </Routes>
-      </BrowserRouter>
-    </UseContextProvider>
+    <RecoilRoot>
+      <UseContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/use_state" element={<UseStateExample />} />
+            <Route path="/use_reducer" element={<UseReducerExample />} />
+            <Route path="/use_context" element={<UseContextExample />} />
+            <Route path="/redux_toolkit" element={<ReduxExample />} />
+            <Route path="/zustand" element={<ZustandExample />} />
+            <Route path="/jotai" element={<JotaiExample />} />
+            <Route path="/recoil" element={<RecoilExample />} />
+            <Route path="/react_query" element={<Home />} />
+            <Route path="/apollo_client" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </UseContextProvider>
+    </RecoilRoot>
   );
 };
 
@@ -94,18 +99,6 @@ const Home = () => {
             url="/redux_toolkit"
           />
           <Card
-            subtitle="State management using GraphQL"
-            title="Apollo Client"
-            description="A library for managing state using GraphQL."
-            url="/apollo_client"
-          />
-          <Card
-            subtitle="Data Fetching & Synchronization"
-            title="react-query"
-            description="A library for data fetching and synchronization."
-            url="/react_query"
-          />
-          <Card
             subtitle="Minimalistic State Management"
             title="zustand"
             description="A Redux like library aiming for a simple API."
@@ -117,18 +110,21 @@ const Home = () => {
             description="A library for atomic state management."
             url="/jotai"
           />
-          {/* <Card
-            subtitle=""
-            title="Recoil"
-            description=""
-            url="/recoil"
+          <Card subtitle="" title="Recoil" description="" url="/recoil" />
+          <Card
+            subtitle="Data Fetching & Synchronization"
+            title="react-query"
+            description="A library for data fetching and synchronization."
+            url="/react_query"
           />
           <Card
-            subtitle=""
-            title="swr"
-            description="Introducing a library for atomic state management, learn how to efficiently manage finely divided states."
-            url="/swr"
-          /> */}
+            subtitle="State management using GraphQL"
+            title="Apollo Client"
+            description="A library for managing state using GraphQL."
+            url="/apollo_client"
+          />
+          {/* <Card subtitle="" title="swr" description="" url="/swr" />
+          <Card subtitle="" title="Mobx" description="" url="/mobx" /> */}
         </div>
       </div>
     </section>
