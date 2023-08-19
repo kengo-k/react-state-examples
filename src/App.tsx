@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { JotaiExample } from "./JotaiExample";
 import { ReduxExample } from "./ReduxExample";
 import { VanillaExample } from "./VanillaExample";
 import { ZustandExample } from "./ZustandExample";
@@ -38,7 +39,7 @@ const App = () => {
         <Route path="/apollo_client" element={<Home />} />
         <Route path="/react_query" element={<Home />} />
         <Route path="/zustand" element={<ZustandExample />} />
-        <Route path="/jotai" element={<Home />} />
+        <Route path="/jotai" element={<JotaiExample />} />
       </Routes>
     </BrowserRouter>
   );
